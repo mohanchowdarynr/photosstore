@@ -15,20 +15,23 @@ function App() {
   const [ passwordError,setPasswordError] = useState('');
   const [ hasAccount, setHasAccount] = useState('');
   const [selectedImg, setSelectedImg] = useState(null);
+
   const clearInputs = () => {
     setEmail('');
     setPassword('');
   }
+
   const clearErrors = () => {
     setEmailError('');
     setPasswordError('');
   }
+
   const handleLogin = () => {
     clearErrors();
     projectAuth.signInWithEmailAndPassword(email,password)
     .catch((err) => {
       switch (err.code){
-        case "auth/Invalid-email":
+        case "auth/invalid-email":
         case "auth/user-disabled":
         case "auth/user-not-found":
          setEmailError(err.message);
@@ -36,24 +39,29 @@ function App() {
         case "auth/wrong-password":
           setPasswordError(err.message);
           break;
+        default:
+
       }
     });
   };
+
   const handleSignUp = () => {
     clearErrors();
     projectAuth.createUserWithEmailAndPassword(email,password)
     .catch((err) => {
       switch (err.code){
-        case "auth/mail-already-in-use":
+        case "auth/email-already-in-use":
         case "auth/invalid-email":
          setEmailError(err.message);
          break;
         case "auth/weak-password":
           setPasswordError(err.message);
           break;
+          default:
       }
     })
   }
+
   const handleLogOut = () => {
     projectAuth.signOut();
   }
@@ -68,9 +76,10 @@ function App() {
       }
     });
   };
+
    useEffect(() => {
      authListener();
-   }, []);
+   });
 
   return (
     <div className="App">

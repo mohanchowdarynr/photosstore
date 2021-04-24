@@ -30,7 +30,7 @@ button {
   margin: auto;
   width: 100%;
   width: 450px;
-  height: 400px;
+  max-height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: center;

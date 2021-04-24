@@ -29,7 +29,7 @@ const Login = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
-            <p>{emailError}</p>
+            <p className="errorMsg">{emailError}</p>
             <label>password</label>
             <input 
                 type="password"
@@ -38,7 +38,7 @@ const Login = ({
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <p>{passwordError}</p>
+            <p  className="errorMsg">{passwordError}</p>
             <div className="btnContainer">
              {hasAccount ?
              (<> 
